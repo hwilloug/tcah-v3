@@ -1,0 +1,73 @@
+---
+const galleryImages = [
+  {
+    src: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
+    alt: "Dogs running in the park"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1560807707-8cc77767d783?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    alt: "Veterinarian examining a cat"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    alt: "Puppy getting a checkup"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    alt: "Dog at dental cleaning"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1587764379873-97837921fd44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80",
+    alt: "Cat receiving treatment"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    alt: "Veterinary surgery"
+  }
+];
+
+// For the homepage, we'll only show the first 3 images
+const showAll = Astro.props.showAll || false;
+const displayImages = showAll ? galleryImages : galleryImages.slice(0, 3);
+---
+
+<section id="gallery" class="py-16 bg-accent/20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-primary mb-4">Photo Gallery</h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        Take a look at our facility and some of our adorable patients.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {displayImages.map((image, index) => {
+        // Alternate between accent colors for a more dynamic look
+        const accentColors = ["accent1", "accent2", "accent3", "accent4"];
+        const accentColor = accentColors[index % accentColors.length];
+        
+        return (
+          <div class="group relative overflow-hidden rounded-lg shadow-lg transition-transform hover:scale-105">
+            <img 
+              src={image.src} 
+              alt={image.alt} 
+              class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class={`absolute inset-0 bg-${accentColor}/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+          </div>
+        );
+      })}
+    </div>
+    
+    {!showAll && (
+      <div class="mt-10 text-center">
+        <a 
+          href="/gallery" 
+          class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-lg"
+        >
+          View More Photos
+        </a>
+      </div>
+    )}
+  </div>
+</section>
