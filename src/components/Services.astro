@@ -3,38 +3,22 @@ const services = [
   {
     title: "Wellness Exams",
     description: "Comprehensive check-ups to ensure your pet's ongoing health and well-being.",
-    icon: "🩺",
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
+    image: "https://tcah-v2-images.s3.us-east-1.amazonaws.com/4156769446_3f82ce8edd_o.jpg"
   },
   {
     title: "Vaccinations",
     description: "Protect your pet from common diseases with our vaccination programs.",
-    icon: "💉",
-    image: "https://images.unsplash.com/photo-1612531822129-ec4e4c9b5026?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
+    image: "https://tcah-v2-images.s3.us-east-1.amazonaws.com/6411073983_74549d959e_o.jpg"
   },
   {
     title: "Dental Care",
     description: "Complete dental services to maintain your pet's oral health.",
-    icon: "🦷",
-    image: "https://images.unsplash.com/photo-1631897276150-96234c118812?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
+    image: "https://tcah-v2-images.s3.us-east-1.amazonaws.com/5004809505_ed9e630b55_o.jpg"
   },
   {
     title: "Surgery",
     description: "Advanced surgical procedures performed with the utmost care and precision.",
-    icon: "🔪",
-    image: "https://images.unsplash.com/photo-1584486483122-af7d49cf2992?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-  },
-  {
-    title: "Laboratory Services",
-    description: "On-site diagnostic testing for quick and accurate results.",
-    icon: "🧪",
-    image: "https://images.unsplash.com/photo-1579154341098-e4e158cc7f55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
-  },
-  {
-    title: "Emergency Care",
-    description: "24/7 emergency services for when your pet needs immediate attention.",
-    icon: "🚑",
-    image: "https://images.unsplash.com/photo-1606425271394-c3ca9aa1fc06?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80"
+    image: "https://tcah-v2-images.s3.us-east-1.amazonaws.com/4167338743_3306a67a67_o.jpg"
   }
 ];
 ---
@@ -46,7 +30,7 @@ const services = [
       <p class="text-lg text-gray-600 max-w-3xl mx-auto">We offer a comprehensive range of veterinary services to keep your pets healthy and happy throughout their lives.</p>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {services.map((service, index) => {
         // Alternate between accent colors for a more dynamic look
         const accentColors = ["accent1", "accent2", "accent3", "accent4"];
@@ -58,7 +42,6 @@ const services = [
               <img src={service.image} alt={service.title} class="w-full h-full object-cover">
             </div>
             <div class="p-6">
-              <div class={`text-3xl mb-3 text-${accentColor}`}>{service.icon}</div>
               <h3 class="text-xl font-bold text-primary mb-2">{service.title}</h3>
               <p class="text-gray-600">{service.description}</p>
             </div>
